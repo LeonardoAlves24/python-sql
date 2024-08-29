@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Vendas</title>
+</head>
+<body>
+    <h1>Registro de Vendas</h1>
+    
+    <!-- Formulário para Registrar Venda -->
+    <form action="/index" method="POST">
+        <label for="nome_produto">Nome do Produto:</label><br>
+        <input type="text" id="nome_produto" name="nome_produto" required><br><br>
+        <label for="valor">Valor:</label><br>
+        <input type="number" id="valor" name="valor" required><br><br>
+        <input type="submit" name="action" value="Registrar Venda">
+    </form>
+
+    <!-- Formulário separado para Mostrar Vendas -->
+    <form action="/index" method="POST">
+        <input type="submit" name="action" value="Mostrar Vendas">
+    </form>
+
+    <!-- Botão para Sair -->
+    <form action="/index" method="POST">
+        <input type="submit" name="action" value="Sair">
+    </form>
+
+    {% if vendas %}
+        <h2>Vendas Registradas:</h2>
+        <ul>
+            {% for venda in vendas %}
+                <li>{{ venda[0] }} - R$ {{ venda[1] }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
